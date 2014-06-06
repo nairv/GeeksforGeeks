@@ -13,24 +13,26 @@ public class InorderTraversal {
 			printInorderRecursive(node.getRight());
 		}
 	}
-	
-	
+
 	
 	public static void printInorder(Node root){
 		Stack<Node> s1 = new Stack<Node>();
-		s1.add(root);
+		boolean done = false;
+		Node current = root;
 		
-		while(!s1.empty()){
-			Node top = s1.peek();
-			if(top.getLeft() != null){
-				s1.add(top.getLeft());
+		while(!done){
+			if(current!= null){
+				s1.push(current);
+				current = current.getLeft();		
 			}
 			else{
-				Node top1 = s1.pop();
-				System.out.print(top1.getData() + "\t");
-				if(top1.getRight()!= null){
-					s1.add(top1.getRight());
+				if(!s1.empty()){
+					current = s1.pop();
+					System.out.print(current.getData() + "\t");
+					current = current.getRight();
 				}
+				else
+				done = true;
 			}
 		}
 	}
