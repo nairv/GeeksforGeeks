@@ -31,6 +31,7 @@ public class Node {
 	
 	public Node(int data){
 		setData(data);
-		
+		setLeft(null);
+		setRight(null);
 	}
 }
