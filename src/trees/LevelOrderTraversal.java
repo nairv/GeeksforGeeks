@@ -17,8 +17,6 @@ public class LevelOrderTraversal {
 	}
 	public static void main(String args[]){
     BinaryTree bt = new BinaryTree();
-
-		
 		printLevelOrder(bt.root);
 	}
 }
