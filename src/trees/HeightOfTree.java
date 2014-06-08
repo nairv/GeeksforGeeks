@@ -2,6 +2,7 @@ package trees;
 
 /**
  * Created by vineet on 6/7/14.
+ * Gets the height of the tree recursively
  */
 public class HeightOfTree {
   public static int max(int x , int y){
