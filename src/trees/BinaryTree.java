@@ -14,5 +14,7 @@ public class BinaryTree {
     root.setRight(r1);
     l1.setLeft(new Node(2));
     l1.setRight(new Node(8));
+    r1.setLeft(new Node(12));
+    r1.setRight(new Node(18));
   }
 }
