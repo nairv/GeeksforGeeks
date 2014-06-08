@@ -1,7 +1,7 @@
 package trees;
 
 /**
- * Created by Vineet on 6/7/14.
+ * Created by Vineet Nair on 6/7/14.
  * Gets the height of the tree recursively
  */
 public class HeightOfTree {
