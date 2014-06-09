@@ -2,6 +2,13 @@ package trees;
 
 /**
  * Created by vineet on 6/7/14.
+ * Template for creating a Binary tree
+ *        10
+ *      /    \
+ *    5       15
+ *   /  \    /   \
+ * 2    8   12    18
+ *
  */
 public class BinaryTree {
   Node root = null;
