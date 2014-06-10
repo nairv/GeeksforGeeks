@@ -9,7 +9,7 @@ public class EnforceChildrenSumPropertyTest {
   @Test
   public void testConvertTree() throws Exception {
     BinaryTree bt = new BinaryTree();
-    
+
 
     EnforceChildrenSumProperty.convertTree(bt.root);
 

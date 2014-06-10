@@ -15,10 +15,14 @@ public class RootLeafPaths {
   public static void printPathsRecurs(Node root , int pathLen ){
     if(root == null) return;
     path[pathLen++] = root.getData();
-    if(root.getLeft() == null && root.getRight() == null)
+
+    // If we have reached a leaf print paths
+    if(root.getLeft() == null && root.getRight() == null){
       printpaths(pathLen);
+      return;
+    }
     else{
-        printPathsRecurs(root.getLeft() , pathLen);
+        printPathsRecurs(root.getLeft(), pathLen);
         printPathsRecurs(root.getRight() , pathLen);
 
     }
