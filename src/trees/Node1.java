@@ -3,11 +3,11 @@ package trees;
 /**
  * Created by vineet on 6/9/14.
  */
-public class Node1 {
-  public int data;
+public class Node1<Type> {
+  public Type data;
   public Node1 left , right , parent;
 
-  Node1(int data){
+  Node1(Type data){
     this.data = data;
     this.left = this.parent= this.right = null;
   }
@@ -29,7 +29,7 @@ public class Node1 {
     return this.right;
   }
 
-  public int getData(){
+  public Type getData(){
     return this.data;
   }
 }
