@@ -5,12 +5,21 @@ package trees;
  */
 public class SuccessorsBT {
 
-  public static Node1 getLeftMost(Node1 node){
-    Node1 temp = node;
-    while (temp.getLeft() != null){
-      temp = temp.getLeft();
+  public static Node1 getRightTreeChildren(Node1 r){
+    //If current Node does not have any children
+    // return the current node
+    if(r.getRight() == null && r.getLeft() == null)
+      return r;
+
+    //If current Node does not have a left subtree
+    // Return the rightTreechildren of the right child
+    if(r.getLeft() == null){
+      return getRightTreeChildren(r.getRight());
     }
-    return temp;
+    else{
+      return getRightTreeChildren(r.getLeft());
+    }
+
   }
 
   public static Node1 postOrderSuccessor(Node1 node){
@@ -24,7 +33,7 @@ public class SuccessorsBT {
     // if parent's right child is null , return parent
     if(node.parent.getLeft() == node){
       if(node.parent.getRight() != null)
-        return getLeftMost(node.parent.right);
+        return getRightTreeChildren(node.parent.right);
       else
         return node.parent;
     }
@@ -38,21 +47,8 @@ public class SuccessorsBT {
   }
 
   public static Node1 preOrderSuccessor(Node1 node){
-    //If node is a parent , return its left child, else return its right child
-    if(node.getLeft() != null){
-      return node.getLeft();
-    }
 
-    if(node.getRight() != null){
-      return node.getRight();
-    }
-
-    // If it does not have a left or right child , return its parent's right child, else return null
-    if(node.parent.getLeft() == node)
-      return node.parent.getRight();
-    else
-      return null;
-
+    return null;
   }
 
   public static Node1 inOrderSuccessor(Node1 root){
