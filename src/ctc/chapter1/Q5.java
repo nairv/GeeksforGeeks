@@ -7,24 +7,41 @@ package ctc.chapter1;
  * if the string doesnt become smaller , return the original string
  */
 public class Q5 {
+  public static int checkCompression(String s1){
+    int i = 0;
+    int count= 0;
+    int len = s1.length();
+    while(i < len){
+      char localchar = s1.charAt(i);
+      int localcount = 0;
+      while((i<len) && s1.charAt(i) == localchar){
+        localcount++;
+        i++;
+      }
+      count += 1+ String.valueOf(localcount).length();
+    }
+    return count;
+  }
+
   public static String compress(String s1){
-    StringBuffer sb = new StringBuffer(s1.length());
+    int len = s1.length();
+    if(checkCompression(s1) >= len){
+      return s1;
+    }
+    StringBuffer sb = new StringBuffer(len);
     int i = 0;
     int nw = 0;
-    while(i < s1.length()){
+    while(i < len){
       int localchar = s1.charAt(i);
       int localcount = 0;
-      while((i < s1.length()) && (s1.charAt(i) == localchar) ){
+      while((i < len) && (s1.charAt(i) == localchar) ){
         localcount++;
         i++;
       }
       sb.append((char)localchar);
       sb.append(localcount);
     }
-    if(sb.length() >= s1.length())
-      return s1;
-    else
-      return sb.toString();
+    return sb.toString();
   }
 
   public static void main(String args[]){
