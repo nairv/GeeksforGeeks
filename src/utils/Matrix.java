@@ -6,19 +6,19 @@ import java.util.Random;
  * Created by vineet on 9/1/14.
  */
 public class Matrix {
-  public static int[][] generateMatrix(int n){
+  public static int[][] generate2DMatrix(int n){
     int a[][] = new int[n][n];
 
     for(int i = 0 ; i < n; i++){
       for(int j = 0; j < n ; j++){
         Random r = new Random();
-        a[i][j] = Math.abs(r.nextInt())%100;
+        a[i][j] = Math.abs(r.nextInt())%10;
       }
     }
     return a;
   }
 
-  public static void printMatrix(int a[][]){
+  public static void print2DMatrix(int a[][]){
     System.out.println("Printing matrix->");
     System.out.println("---------------------------------");
     for (int i = 0 ; i < a.length ; i++){
