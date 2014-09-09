@@ -27,15 +27,20 @@ public class Trie {
 
   static Node rootNode;
   private Mode mode;
+
   public enum Mode{
     WHOLE_WORD,
     PARTIAL_WORD;
   }
+
   public void setMode(Mode m){
     this.mode = m;
   }
+
+
   Trie(){
     rootNode = new Node(' ');
+    setMode(Mode.WHOLE_WORD);
   }
 
   public void insertWord(String word){
