@@ -12,6 +12,10 @@ package DP;
  *
  * Let egg[i][j] represent the min no of trials that would be needed to get the solution with j floors and i eggs
  * if egg[i][j] = 1+ min(max(egg[i-1][x-1] , egg[i][j-x])
+ * Two cases:
+ * we drop the egg at xth floor:
+ * 1) it breaks then we are left with i-1 eggs and we need to check all floors less than x floors(x-1) floors
+ * 2) it doesnt break, that means we have i eggs and we need to check for j-x floors
  *
  */
 public class EggDrop {
