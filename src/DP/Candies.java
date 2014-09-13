@@ -27,13 +27,13 @@ import java.util.Scanner;
 public class Candies {
 
   public static int getMinCandies(ArrayList<Integer> al){
-    ArrayList<Integer> right = new ArrayList<Integer>(al.size());
-    ArrayList<Integer> left = new ArrayList<Integer>(al.size());
-    ArrayList<Integer> solution = new ArrayList<Integer>(al.size());
+    ArrayList<Integer> right = new ArrayList<Integer>();
+    ArrayList<Integer> left = new ArrayList<Integer>();
+    ArrayList<Integer> solution = new ArrayList<Integer>();
 
-    for(int i= 0; i < al.size(); i++){
-      right.set(i , 1);
-      left.set(i , 1);
+    for(int i = 0; i < al.size(); i++){
+      right.add(1);
+      left.add(1);
     }
 
     for(int i = al.size()-2 ; i >= 0; i--){
@@ -48,7 +48,7 @@ public class Candies {
     }
     int count = 0;
     for(int i = 0 ; i < al.size() ; i++){
-      solution.set(i , Math.max(left.get(i) , right.get(i)));
+      solution.add(Math.max(left.get(i) , right.get(i)));
       count+= solution.get(i);
     }
 
@@ -62,12 +62,13 @@ public class Candies {
     Integer i = Integer.parseInt(sc.nextLine());
     if(i > 100000)
       throw new Exception("Integer cannot be greater than 100000");
-    ArrayList<Integer> al = new ArrayList<Integer>(i);
+    ArrayList<Integer> al = new ArrayList<Integer>();
     while(i > 0){
       int k = Integer.parseInt(sc.nextLine());
       if(k > 100000)
         throw new Exception("Integer cannot be greater than 100000");
       al.add(k);
+      i--;
     }
 
     System.out.println(getMinCandies(al));
