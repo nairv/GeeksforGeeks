@@ -1,5 +1,7 @@
 package DP;
 
+import utils.Arrays;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -30,7 +32,7 @@ public class Candies {
     ArrayList<Integer> right = new ArrayList<Integer>();
     ArrayList<Integer> left = new ArrayList<Integer>();
     ArrayList<Integer> solution = new ArrayList<Integer>();
-
+    System.out.println("Original array : "+ al.toString());
     for(int i = 0; i < al.size(); i++){
       right.add(1);
       left.add(1);
@@ -42,15 +44,20 @@ public class Candies {
     }
 
     for(int i = 1 ; i <al.size() ; i++){
-      if(al.get(i) < al.get(i-1)){
+      if(al.get(i-1) < al.get(i)){
         left.set(i , left.get(i-1)+1);
       }
     }
     int count = 0;
     for(int i = 0 ; i < al.size() ; i++){
-      solution.add(Math.max(left.get(i) , right.get(i)));
+      solution.add(Math.max(left.get(i), right.get(i)));
       count+= solution.get(i);
     }
+
+
+    System.out.println(right.toString());
+    System.out.println(left.toString());
+    System.out.println("Final Distribution :" + solution.toString());
 
     return count;
 
@@ -71,7 +78,7 @@ public class Candies {
       i--;
     }
 
-    System.out.println(getMinCandies(al));
+    System.out.println("Minimum Number of candies needed :" + getMinCandies(al));
 
   }
 }
