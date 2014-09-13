@@ -57,12 +57,17 @@ public class Candies {
 
   }
 
-  public static void main(String args[]){
+  public static void main(String args[]) throws Exception{
     Scanner sc = new Scanner(System.in);
     Integer i = Integer.parseInt(sc.nextLine());
+    if(i > 100000)
+      throw new Exception("Integer cannot be greater than 100000");
     ArrayList<Integer> al = new ArrayList<Integer>(i);
     while(i > 0){
-      al.add(Integer.parseInt(sc.nextLine()));
+      int k = Integer.parseInt(sc.nextLine());
+      if(k > 100000)
+        throw new Exception("Integer cannot be greater than 100000");
+      al.add(k);
     }
 
     System.out.println(getMinCandies(al));
