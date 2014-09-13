@@ -43,7 +43,7 @@ public class Candies {
 
     for(int i = 1 ; i <al.size() ; i++){
       if(al.get(i) < al.get(i-1)){
-        left.set(i , left.get(i-1));
+        left.set(i , left.get(i-1)+1);
       }
     }
     int count = 0;
@@ -65,7 +65,7 @@ public class Candies {
       al.add(Integer.parseInt(sc.nextLine()));
     }
 
-    System.out.println();
+    System.out.println(getMinCandies(al));
 
   }
 }
