@@ -56,6 +56,10 @@ class MyLinkedHashMap {
 
   //Lock for exist check for the hashMap
   private static final Object existLock = new Object();
+
+  /*
+    Part of the singleton implementation
+   */
   public static synchronized MyLinkedHashMap getInstance(int k){
     synchronized (existLock){
       if(instance == null){
@@ -65,6 +69,9 @@ class MyLinkedHashMap {
       return instance;
     }
   }
+  /*
+  Part of the singleton implementation
+   */
   public static synchronized MyLinkedHashMap getInstance() throws Exception{
     synchronized (existLock){
       if(instance == null){
@@ -82,11 +89,18 @@ class MyLinkedHashMap {
 }
 public class ConcurrentMemoize {
   private static MyLinkedHashMap hm;
+  /*
+  Template given in the form of an interface
+   */
   public interface Function {
     // does not take or return nil
     Object call (Object x);
   }
 
+  /*
+  Implementation of the interface
+  No reason to put it static, could have very well defined it outside and do away with the static thingie
+   */
   static class MyFunction implements Function{
     public Object call(Object obj){
       Object obj1 = hm.put(obj,true);
