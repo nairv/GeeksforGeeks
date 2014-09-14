@@ -110,8 +110,12 @@ public class ConcurrentMemoize {
     f.call("Vineet");
     f.call("Vin1");
     f.call("Vin2");
+    f.call("Vineet");
     hm.printKeys();
     f.call("Vin3");
+
+    hm.printKeys();
+    f.call("Vineet");
     hm.printKeys();
 
   }
