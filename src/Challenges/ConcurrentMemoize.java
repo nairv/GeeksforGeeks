@@ -24,7 +24,7 @@ class MyLinkedHashMap {
   private MyLinkedHashMap(int k){
     MAX_ENTRIES = k;
     hmInstance = new LinkedHashMap(MAX_ENTRIES+1 , 0.75F , false){
-      protected boolean removeEldestEntry(Map.Entry eldest) {
+      protected synchronized boolean removeEldestEntry(Map.Entry eldest) {
         return size()>  MAX_ENTRIES;
       }
     };
