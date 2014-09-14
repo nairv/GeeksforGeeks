@@ -65,6 +65,15 @@ class MyLinkedHashMap {
       return instance;
     }
   }
+  public static synchronized MyLinkedHashMap getInstance() throws Exception{
+    synchronized (existLock){
+      if(instance == null){
+        throw new Exception("If Calling for the first time , please specify number of elements in the cache in the constructor");
+      }
+
+      return instance;
+    }
+  }
 
   public synchronized void printKeys(){
     System.out.println(hmInstance);
@@ -89,13 +98,14 @@ public class ConcurrentMemoize {
   // that caches the last 'k' computed values
   public static Function boundedMemoize(Function f, int k) {
     // Your code here
+    f = new MyFunction();
     hm = MyLinkedHashMap.getInstance(k);
     return f;
   }
 
   public static void main(String args[]){
-
-    Function f = boundedMemoize( new MyFunction(), 3);
+    Function f = null;
+    f = boundedMemoize( f, 3);
     f.call("Vineet");
     f.call("Vineet");
     f.call("Vin1");
