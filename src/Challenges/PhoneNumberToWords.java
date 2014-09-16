@@ -24,7 +24,7 @@ public class PhoneNumberToWords {
       BufferedReader br = new BufferedReader(new InputStreamReader(fis));
       String line;
       while((line = br.readLine()) != null){
-        dict.put(line , true);
+        dict.put(line.toLowerCase() , true);
       }
     }
     catch(Exception ex){
@@ -43,17 +43,19 @@ public class PhoneNumberToWords {
     numberToLetters.put(8 , new ArrayList<Character>(Arrays.asList('T','U','V')));
     numberToLetters.put(9 , new ArrayList<Character>(Arrays.asList('W','X','Y','Z')));
   }
-  public static void generateWordsNoDictionary(String phoneNumber){
+  public static ArrayList<String> generateWordsNoDictionary(String phoneNumber){
     StringBuilder partialWord = new StringBuilder();
     result = new ArrayList<String>();
     generateWords(phoneNumber , partialWord , false);
+    return result;
 
   }
 
   public static void generateWords(String partialPhoneNumber , StringBuilder partialWord , boolean useDict){
     if(partialPhoneNumber.length() == 0){
+      String fullWord = partialWord.toString();
       if(useDict){
-        if(!dict.containsKey(partialWord.toString()))
+        if(!dict.containsKey(fullWord.toLowerCase()))
           return;
       }
       result.add(partialWord.toString());
@@ -70,19 +72,18 @@ public class PhoneNumberToWords {
     }
   }
 
-  public static void generateWordsInDictionary(String phoneNumber){
+  public static ArrayList<String> generateWordsInDictionary(String phoneNumber){
     StringBuilder partialWord = new StringBuilder();
     result = new ArrayList<String>();
     generateWords(phoneNumber , partialWord , true);
+    return result;
   }
 
   public static void main(String args[]){
     generateWordsNoDictionary("432");
-
     System.out.println(result.toString());
 
     generateWordsInDictionary("432");
-
     System.out.println(result.toString());
 
   }
