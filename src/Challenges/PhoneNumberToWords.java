@@ -1,5 +1,8 @@
 package Challenges;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -14,6 +17,20 @@ import java.util.List;
 public class PhoneNumberToWords {
   private static ArrayList<String> result = new ArrayList<String>();
   private static HashMap<Integer , List<Character>> numberToLetters = new HashMap<Integer, List<Character>>();
+  private static HashMap<String , Boolean> dict = new HashMap<String ,Boolean>();
+  static{
+    try{
+      FileInputStream fis = new FileInputStream("/usr/share/dict/words");
+      BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+      String line;
+      while((line = br.readLine()) != null){
+        dict.put(line , true);
+      }
+    }
+    catch(Exception ex){
+      System.out.println("File not found");
+    }
+  }
   static{
     numberToLetters.put(0 , new ArrayList<Character>(Arrays.asList('0')));
     numberToLetters.put(1 , new ArrayList<Character>(Arrays.asList('1')));
@@ -28,13 +45,17 @@ public class PhoneNumberToWords {
   }
   public static void generateWordsNoDictionary(String phoneNumber){
     StringBuilder partialWord = new StringBuilder();
-
-    generateWords(phoneNumber , partialWord);
+    result = new ArrayList<String>();
+    generateWords(phoneNumber , partialWord , false);
 
   }
 
-  public static void generateWords(String partialPhoneNumber , StringBuilder partialWord){
+  public static void generateWords(String partialPhoneNumber , StringBuilder partialWord , boolean useDict){
     if(partialPhoneNumber.length() == 0){
+      if(useDict){
+        if(!dict.containsKey(partialWord.toString()))
+          return;
+      }
       result.add(partialWord.toString());
       return;
     }
@@ -45,14 +66,24 @@ public class PhoneNumberToWords {
     int length = partialWord.length();
     for(Character c: numberToLetters.get(firstNumber)){
       partialWord.setLength(length);
-      generateWords(remainingNumber, partialWord.append(c));
+      generateWords(remainingNumber, partialWord.append(c) , useDict);
     }
+  }
+
+  public static void generateWordsInDictionary(String phoneNumber){
+    StringBuilder partialWord = new StringBuilder();
+    result = new ArrayList<String>();
+    generateWords(phoneNumber , partialWord , true);
   }
 
   public static void main(String args[]){
     generateWordsNoDictionary("432");
+
     System.out.println(result.toString());
 
+    generateWordsInDictionary("432");
+
+    System.out.println(result.toString());
 
   }
 }
