@@ -21,4 +21,13 @@ public class Arrays<T> {
     out.append("\n");
     return new String(out);
   }
+
+  public static void toString(int[][] arr){
+    for(int i = 0 ; i < arr.length ; i++){
+      for(int j = 0 ; j < arr[i].length ; j++){
+        System.out.print(arr[i][j] + "\t");
+      }
+      System.out.println();
+    }
+  }
 }

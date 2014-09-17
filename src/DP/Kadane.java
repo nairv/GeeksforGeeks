@@ -9,7 +9,7 @@ public class Kadane {
     int max_sofar , max_endinghere;
     max_sofar = max_endinghere = a[0];
     for (int i = 0 ; i < a.length ; i++){
-      max_endinghere = Math.max(max_endinghere , max_endinghere + a[i]);
+      max_endinghere = Math.max(a[i] , max_endinghere+ a[i]);
       max_sofar = Math.max(max_sofar , max_endinghere);
     }
     return max_sofar;
