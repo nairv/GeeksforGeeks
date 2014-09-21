@@ -8,6 +8,23 @@ import java.util.*;
  * Created by vineet on 9/20/14.
  *
  * Given a set of intervals , find the interval with max number of intersections
+ *
+ * Create an Event for each endpoint of an interval
+ * Sort the events(nlogn)
+ * initialize startCount and endCount = 0
+ * for each start event {
+ *   startCount = startCount + 1
+ *   interval.startCount = startCount
+ *   interval.endCount = endCount;
+ * }
+ *
+ * for each end event{
+ *   endCount = endCount + 1;
+ *   interval.numberOfIntersections = startCount - interval.endCount -1
+ *   // number of intersections = present start count - number of events that had ended by the beginning of the interval -1
+ * }
+ *
+ *
  */
 public class IntervalWithMaxIntersections {
 
