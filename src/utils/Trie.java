@@ -7,15 +7,15 @@ package utils;
  * You can search for whole words or prefixes of inserted words based on the mode.
  */
 
-class Node{
-  Node[] children;
+class TNode{
+  TNode[] children;
   char data;
   boolean isTerminating = false;
 
-  Node(char data){
+  TNode(char data){
     this.data = data;
     this.isTerminating = false;
-    children = new Node[26];
+    children = new TNode[26];
   }
 
   char getChar(){
@@ -25,7 +25,7 @@ class Node{
 }
 public class Trie {
 
-  static Node rootNode;
+  static TNode rootNode;
   private Mode mode;
 
   public enum Mode{
@@ -39,13 +39,13 @@ public class Trie {
 
 
   Trie(){
-    rootNode = new Node(' ');
+    rootNode = new TNode(' ');
     setMode(Mode.WHOLE_WORD);
   }
 
   public void insertWord(String word){
     char[] arr = word.toUpperCase().toCharArray();
-    Node temp = rootNode;
+    TNode temp = rootNode;
 
     for (char c: arr){
       int arrayIndex = c-'A';
@@ -53,7 +53,7 @@ public class Trie {
         temp = temp.children[arrayIndex];
       }
       else{
-        temp.children[arrayIndex] = new Node(c);
+        temp.children[arrayIndex] = new TNode(c);
         temp = temp.children[arrayIndex];
       }
     }
@@ -63,7 +63,7 @@ public class Trie {
 
   public boolean searchWord(String word){
     char[] arr = word.toUpperCase().toCharArray();
-    Node temp = rootNode;
+    TNode temp = rootNode;
     for (char c: arr){
       int arrayIndex = c-'A';
       if(temp.children[arrayIndex] != null){

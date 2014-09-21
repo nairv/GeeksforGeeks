@@ -24,6 +24,7 @@ public class PNode {
 
   public void setLeft(PNode left) {
     this.left = left;
+    this.left.parent = this;
   }
 
   public PNode getRight() {
@@ -32,6 +33,7 @@ public class PNode {
 
   public void setRight(PNode right) {
     this.right = right;
+    this.right.parent = this;
   }
 
   public int getData() {

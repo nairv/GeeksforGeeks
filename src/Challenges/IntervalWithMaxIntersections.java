@@ -146,7 +146,6 @@ public class IntervalWithMaxIntersections {
     intervalSet.add(new Interval(7 , 9));
     intervalSet.add(new Interval(2, 10));
 
-
     getIntervalWithMaxIntersections(intervalSet);
 
   }
