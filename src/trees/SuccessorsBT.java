@@ -46,8 +46,24 @@ public class SuccessorsBT {
     return null;
   }
 
-  public static Node1 preOrderSuccessor(Node1 node){
+  public static Node1 preOrderHelper(Node1 node){
+    Node1 temp = node.parent;
+    while(temp == temp.parent.getRight())
+      temp = temp.parent;
 
+    return temp.parent.getRight();
+  }
+  public static Node1 preOrderSuccessor(Node1 node){
+    if(node.hasChildren()){
+      return node.getLeft()== null?node.getRight():node.getLeft();
+    }
+    else{
+      if(node.parent.getLeft() == node)
+        return node.parent.getRight()!=null? node.parent.getRight():null;
+      else if(node.parent.getRight() == node){
+        return preOrderHelper(node);
+      }
+    }
     return null;
   }
 

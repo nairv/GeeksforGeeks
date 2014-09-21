@@ -43,7 +43,7 @@ public class SuccessorsBTTest {
 
   @Test
   public void testPreOrderSuccessor() throws Exception {
-    
+
   }
 
   @Test

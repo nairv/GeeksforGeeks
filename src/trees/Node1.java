@@ -20,6 +20,13 @@ public class Node1<Type> {
     this.right = node;
     node.parent = this;
   }
+  public boolean hasChildren(){
+    if(this.getLeft() != null || this.getRight() != null){
+      return true;
+    }
+    else
+      return false;
+  }
 
   public Node1 getLeft(){
     return this.left;

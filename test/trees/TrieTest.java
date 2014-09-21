@@ -8,6 +8,7 @@ import org.junit.Test;
 public class TrieTest {
   @Test
   public void testInsertWord() throws Exception {
-
+    Trie a = new Trie();
+    a.insertWord("Vineet");
   }
 }
