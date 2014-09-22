@@ -18,9 +18,9 @@ public class BinaryTreeQuestions {
     //If the current node is root
     if(node.getParent() == null){
       if(node.getRight() == null)
-        return null;
+        return new PNode(-1);
       else{
-        return getLeftMostOfRightSubtree(node.getRight());
+        return getLeftMostOfRightSubtree(node);
       }
     }
 
@@ -33,7 +33,7 @@ public class BinaryTreeQuestions {
 
       //if the node has a right child
       else{
-        return getLeftMostOfRightSubtree(node.getRight());
+        return getLeftMostOfRightSubtree(node);
       }
     }
 
@@ -42,7 +42,7 @@ public class BinaryTreeQuestions {
 
       //If current node has a right child
       if(node.getRight() != null){
-        return getLeftMostOfRightSubtree(node.getRight());
+        return getLeftMostOfRightSubtree(node);
       }
 
       //If current node does not have a right child
@@ -55,7 +55,7 @@ public class BinaryTreeQuestions {
           temp = temp.getParent();
         }
         if(temp == null)
-          return null;
+          return new PNode(-1);
         else{
           return temp.getParent();
         }
@@ -72,6 +72,58 @@ public class BinaryTreeQuestions {
       temp = temp.getLeft();
     }
     return temp;
+
+  }
+
+  public static PNode getPostOrderSuccessor(PNode node){
+    System.out.println("Current Node Data :"+ node.getData());
+
+    //If current Node is a root
+    if(node.getParent() == null){
+      return new PNode(-1);
+    }
+
+    //If current Node is the right child of its parent
+    if(node == node.getParent().getRight()){
+      return node.getParent();
+    }
+
+    //If current Node is the left child of its parent
+    else{
+      //Node
+      if(node.getParent().getRight() == null)
+        return node.getParent();
+      else
+        return getLeftMostOfRightSubtree(node.getParent());
+    }
+  }
+
+
+
+  public static PNode getPreOrderSuccessor(PNode node){
+    System.out.println("Current Node :"+node.getData());
+    if(node.getLeft()!= null || node.getRight() != null){
+      return node.getLeft()!= null?node.getLeft():node.getRight();
+    }
+    if(node.getParent() == null) return new PNode(-1);
+    if(node.getParent().getLeft() == node){
+      if(node.getParent().getRight() != null)
+        return node.getParent().getRight();
+      else
+        return new PNode(-1);
+    }
+    else{
+      PNode temp = node.getParent();
+      while(temp != null && temp == temp.getParent().getRight()){
+        temp = temp.getParent();
+      }
+      if(temp == null)
+        return new PNode(-1);
+      else{
+        return temp.getParent().getRight();
+      }
+    }
+
 
   }
 }

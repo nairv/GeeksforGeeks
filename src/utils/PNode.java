@@ -45,12 +45,12 @@ public class PNode {
     this.data = data;
   }
 
-  PNode(int data){
+  public PNode(int data){
     this.data = data;
     this.parent = this.left = this.right = null;
   }
 
-  PNode(int data , PNode parent){
+  public PNode(int data , PNode parent){
     this.data = data;
     this.parent = parent;
     this.left = this.right = null;
