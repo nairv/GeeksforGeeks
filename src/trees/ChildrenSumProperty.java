@@ -11,8 +11,6 @@ public class ChildrenSumProperty {
       return true;
     }
 
-
-
     int left = root.getLeft()== null? 0:root.getLeft().getData();
     int right = root.getRight()== null?0:root.getRight().getData();
 

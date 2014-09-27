@@ -12,9 +12,10 @@ public class PTestBST {
     PNode l12 = new PNode (4);
     PNode l121 = new PNode (3);
     PNode l122 = new PNode (5);
-    PNode r1 = new PNode (7);
-    PNode r12 = new PNode (9);
-    PNode r121 = new PNode(8);
+    PNode r1 = new PNode (8);
+    PNode r11 = new PNode(7);
+    PNode r12 = new PNode (10);
+    PNode r121 = new PNode(9);
     root.setLeft(l1);
     root.setRight(r1);
     l1.setLeft(l11);
@@ -22,6 +23,7 @@ public class PTestBST {
     l12.setLeft(l121);
     l12.setRight(l122);
     r1.setRight(r12);
+    r1.setLeft(r11);
     r12.setLeft(r121);
     return root;
   }

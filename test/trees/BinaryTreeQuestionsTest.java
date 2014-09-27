@@ -36,4 +36,17 @@ public class BinaryTreeQuestionsTest extends TestCase {
     System.out.println(BinaryTreeQuestions.getPostOrderSuccessor(root.getLeft().getRight().getRight()).getData());
     System.out.println(BinaryTreeQuestions.getPostOrderSuccessor(root.getLeft().getRight().getLeft()).getData());
   }
+
+
+  public void testGetLevel(){
+    System.out.println("Running Level Test ...");
+    PNode root = utils.PTestBST.getTestBST();
+    System.out.println(BinaryTreeQuestions.getLevel(root, root.getLeft().getLeft(), 0));
+    System.out.println(BinaryTreeQuestions.getLevel(root , root.getRight().getRight().getLeft() , 0));
+   }
+
+   public void testGetMaxWidth(){
+    PNode root = utils.PTestBST.getTestBST();
+    System.out.println("Maximum width of the binary tree :"+ BinaryTreeQuestions.getMaxWidth(root));
+  }
 }
