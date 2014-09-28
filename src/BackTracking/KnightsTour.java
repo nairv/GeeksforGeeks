@@ -12,7 +12,7 @@ public class KnightsTour {
     System.out.println("Printing the chess board:");
     for( int i = 0 ; i < rows;i++){
       for(int j = 0; j < cols ;j++){
-        System.out.format("%2d",a[i][j]);
+        System.out.format("%2d", a[i][j]);
         System.out.print("\t");
       }
       System.out.println();
@@ -53,7 +53,8 @@ public class KnightsTour {
   }
   public static boolean solveKnightsTour(int N){
     int sol[][] = new int[N][N];
-    sol = initialize(sol);
+    sol = initialize(sol); 
+    printSolution(sol);
 
     int[] moveY = new int[]{1 , 2, 2, 1, -1, -2, -2 , -1};
     int[] moveX = new int[]{-2,-1, 1, 2, 2 , 1 , -1 , -2};
@@ -82,7 +83,7 @@ public class KnightsTour {
   public static void main(String args[]){
     //int[ = new int[8][8];
 
-    solveKnightsTour(16);
+    solveKnightsTour(8);
 
   }
 }
