@@ -1,7 +1,9 @@
 package DP;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 
 /**
  * Created by vineet on 9/5/14.
@@ -12,28 +14,38 @@ import java.util.HashMap;
  * for each element in the array a[i] , search for a[i] in a hashmap
  * if not found put (sum - a[i]) in the hashmap
  */
+class Pair{
+  int first;
+  int second;
+  Pair(int first , int second){
+    this.first = first;
+    this.second = second;
+  }
+  public String toString(){
+    return new String("("+first+","+second+")" );
+  }
+}
 public class TwoSum {
-  public static int[] getTwoSumTime(int a[] , int sum){
-    HashMap<Integer , Integer > hm = new HashMap<Integer , Integer>();
-    int []result = new int[2];
+  public static ArrayList<Pair> getTwoSumTime(int a[] , int sum){
+    HashSet<Integer> hm = new HashSet<Integer>();
+    ArrayList<Pair> result = new ArrayList<Pair>();
     for(int i= 0 ; i < a.length ; i++){
       int diff = sum - a[i];
-      if(hm.containsKey(a[i])){
-        int index = hm.get(a[i]);
-        result[0] = index+1;
-        result[1] = i+1;
+      if(hm.contains(diff)){
+        int first = a[i];
+        int second = diff;
+        result.add(new Pair(first , second));
       }
       else{
-        hm.put(diff , i);
+        hm.add(a[i]);
       }
     }
     return result;
-
   }
 
   public static void main(String args[]){
     int a[] = {2, 7, 3 , 11, 15};
     utils.Arrays<Integer> arrayUtil = new utils.Arrays<Integer>();
-    System.out.println(arrayUtil.toString(getTwoSumTime(a, 18)));
+    System.out.println(getTwoSumTime(a, 18).toString());
   }
 }
